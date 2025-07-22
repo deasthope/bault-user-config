@@ -15,6 +15,73 @@
             require-prior-idle-ms = <0>;
             flavor = "tap-preferred";
         };
+
+        soft_off: soft_off {
+            compatible = "zmk,behavior-soft-off";
+            label = "SOFT_OFF";
+            #binding-cells = <0>;
+            hold-time-ms = <3000>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        Dash {
+            bindings = <&kp MINUS>;
+            key-positions = <29 28>;
+            layers = <0 1>;
+            require-prior-idle-ms = <80>;
+        };
+
+        Underscore {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <28 29 30>;
+            require-prior-idle-ms = <80>;
+            layers = <0 1>;
+        };
+
+        Plus {
+            bindings = <&kp KP_PLUS>;
+            key-positions = <28 30>;
+            require-prior-idle-ms = <80>;
+            layers = <0 1>;
+        };
+
+        Equals {
+            bindings = <&kp KP_EQUAL>;
+            key-positions = <29 30>;
+            require-prior-idle-ms = <80>;
+            layers = <0 1>;
+        };
+
+        Semicolon {
+            bindings = <&kp SEMICOLON>;
+            key-positions = <20 28>;
+            require-prior-idle-ms = <80>;
+            layers = <0 1>;
+        };
+
+        Colon {
+            bindings = <&kp COLON>;
+            key-positions = <20 29>;
+            require-prior-idle-ms = <80>;
+            layers = <0 1>;
+        };
+
+        Bootloader {
+            bindings = <&bootloader>;
+            key-positions = <31 32>;
+            require-prior-idle-ms = <300>;
+            layers = <3>;
+        };
+
+        DelBT {
+            bindings = <&bt BT_CLR_ALL>;
+            key-positions = <10 9>;
+            require-prior-idle-ms = <300>;
+            layers = <3>;
+        };
     };
 
     keymap {
@@ -40,10 +107,10 @@
 
         function_keys {
             bindings = <
-&kp F1   &kp F2   &kp F3  &kp F4  &kp F5  &kp F6  &kp F7    &kp F8         &kp F9     &kp F10  &kp F11
-&kp F12  &kp F13  &trans  &trans  &trans  &trans  &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END
-&trans   &trans   &trans  &trans  &trans  &trans  &trans    &trans         &trans     &trans
-         &trans   &trans  &trans          &trans            &mo 3          &trans
+&kp F1   &kp F2        &kp F3        &kp F4  &kp F5  &kp F6            &kp F7    &kp F8         &kp F9     &kp F10  &kp F11
+&kp F12  &kp F13       &trans        &trans  &trans  &trans            &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END
+&trans   &trans        &trans        &trans  &trans  &trans            &trans    &trans         &trans     &trans
+         &kp C_VOL_DN  &kp C_VOL_UP  &trans          &kp C_PLAY_PAUSE            &mo 3          &trans
             >;
         };
 
@@ -52,7 +119,7 @@
 &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &trans      &trans  &trans  &trans  &trans  &trans  &trans     &bt BT_CLR
 &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &trans      &trans  &trans  &trans  &trans  &trans  &soft_off
 &trans         &trans         &trans         &trans      &trans  &trans  &trans  &trans  &trans  &trans
-               &bootloader    &trans         &sys_reset          &trans          &trans  &trans
+               &trans         &trans         &sys_reset          &trans          &trans  &trans
             >;
         };
     };
