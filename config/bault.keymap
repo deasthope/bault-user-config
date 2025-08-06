@@ -70,9 +70,9 @@
 
         Bootloader {
             bindings = <&bootloader>;
-            key-positions = <32 33>;
-            require-prior-idle-ms = <300>;
-            layers = <3>;
+            key-positions = <32 33 36 37>;
+            require-prior-idle-ms = <2000>;
+            layers = <0>;
         };
 
         DelBT {
